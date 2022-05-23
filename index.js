@@ -56,6 +56,11 @@ async function run() {
         const services = await cursor.toArray();
         res.send(services);
       });
+
+      app.get('/user', verifyJWT, async (req, res) => {
+        const users = await userCollection.find().toArray();
+        res.send(users);
+      });
   
   
       app.get('/booking', verifyJWT, async (req, res) => {
