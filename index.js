@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Hello From Doctor Uncle own portal!')
+    res.send('The Server is Ready for Elevator Manufacturer Inc.')
   })
   
   app.listen(port, () => {
-    console.log(`Doctors App listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
   })
