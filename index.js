@@ -38,6 +38,7 @@ async function run() {
         const userCollection = client.db('elevator_manufacturer').collection('users');
         const reviewCollection = client.db('elevator_manufacturer').collection('review');
         const paymentCollection = client.db('elevator_manufacturer').collection('payments');
+        const profileCollection = client.db('elevator_manufacturer').collection('profile');
 
         const verifyAdmin = async (req, res, next) => {
             const requester = req.decoded.email;
@@ -73,6 +74,12 @@ async function run() {
         app.post('/service', verifyJWT, verifyAdmin, async (req, res) => {
             const service = req.body;
             const result = await serviceCollection.insertOne(service);
+            res.send(result);
+          });
+
+        app.post('/profile', verifyJWT, async (req, res) => {
+            const profile = req.body;
+            const result = await profileCollection.insertOne(profile);
             res.send(result);
           });
 
